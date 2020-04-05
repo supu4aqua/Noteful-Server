@@ -2,7 +2,7 @@
 const knex = require('knex')
 const app = require('../src/app')
 
-const { makeFoldersArray, makeMaliciousFolder } = require('./api/folders.fixtures')
+const { makeFoldersArray, makeMaliciousFolder } = require('./folders.fixtures')
 
 describe('Folders Endpoints', function() {
   let db
@@ -72,9 +72,9 @@ const testFolders = makeFoldersArray()
 describe(`GET /api/folders/:folder_id`, () => {
   context(`Given no folders`, () => {
     it(`responds with 404`, () => {
-      const folderId = 123456
+      const folderid = 123456
       return supertest(app)
-        .get(`/api/folders/${folderId}`)
+        .get(`/api/folders/${folderid}`)
         .expect(404, { error: { message: `Folder doesn't exist` } })
     })
   })
@@ -89,10 +89,10 @@ describe(`GET /api/folders/:folder_id`, () => {
     })
 
     it('responds with 200 and the specified folder', () => {
-      const folderId = 3
-      const expectedFolder = testFolders[folderId - 1]
+      const folderid = 3
+      const expectedFolder = testFolders[folderid - 1]
       return supertest(app)
-        .get(`/api/folders/${folderId}`)
+        .get(`/api/folders/${folderid}`)
         .expect(200, expectedFolder)
     })
   })
@@ -182,9 +182,9 @@ describe(`POST /api/folders`, () => {
   describe(`DELETE /api/folders/:folder_id`, () => {
     context(`Given no folders`, () => {
       it(`responds with 404`, () => {
-        const folderId = 123456
+        const folderid = 123456
         return supertest(app)
-          .delete(`/api/folders/${folderId}`)
+          .delete(`/api/folders/${folderid}`)
           .expect(404, { error: { message: `Folder doesn't exist` } })
       })
     })

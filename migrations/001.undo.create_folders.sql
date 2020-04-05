@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS blogful_articles;
+DROP TABLE IF EXISTS folders;
